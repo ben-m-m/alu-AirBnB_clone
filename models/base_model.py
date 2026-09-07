@@ -16,7 +16,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-
+    
     def __str__(self):
         """Returns a string representation of the BaseModel instance."""
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
@@ -27,8 +27,5 @@ class BaseModel:
 
     def to_dict(self):
         """Returns a dictionary representation of the BaseModel instance."""
-        dict_representation = self.__dict__.copy()
-        dict_representation["__class__"] = self.__class__.__name__
-        dict_representation["created_at"] = self.created_at.isoformat()
-        dict_representation["updated_at"] = self.updated_at.isoformat()
-        return dict_representation
+        class_name = self.__class__.__name__
+        return self.__dict__ | {"__class__": class_name }
