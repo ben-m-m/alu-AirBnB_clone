@@ -8,7 +8,9 @@ class BaseModel:
         """Initializes a new instance of BaseModel."""
         if kwargs:
             for key, value in kwargs.items():
-                if key == "created_at" or key == "updated_at":
+                if key == "__class__":
+                    continue
+                elif key == "created_at" or key == "updated_at":
                     setattr(self, key, datetime.fromisoformat(value))
                 else:
                     setattr(self, key, value)
@@ -27,5 +29,8 @@ class BaseModel:
 
     def to_dict(self):
         """Returns a dictionary representation of the BaseModel instance."""
-        class_name = self.__class__.__name__
-        return self.__dict__ | {"__class__": class_name }
+        model_dict = self.__dict__.copy()
+        model_dict["__class__"] = self.__class__.__name__
+        model_dict["created_at"] = self.created_at.isoformat()
+        model_dict["updated_at"] = self.updated_at.isoformat()
+        return model_dict
