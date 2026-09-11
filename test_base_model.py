@@ -21,4 +21,4 @@ print(my_new_model)
 print(type(my_new_model.created_at))
 
 print("--")
-print(my_model is my_new_model)
+print("Are my_model and my_new_model the same object?", my_model is my_new_model)

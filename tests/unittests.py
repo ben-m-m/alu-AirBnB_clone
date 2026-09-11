@@ -7,6 +7,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(model.id)
         self.assertIsNotNone(model.created_at)
         self.assertIsNotNone(model.updated_at)
+        self.assertTrue(isinstance(model.created_at, type(model.updated_at)))
+        self.assertRaises(TypeError, BaseModel, id=123, created_at="2021-01-01T00:00:00", updated_at="2021-01-01T00:00:00")
 
     def test_str(self):
         model = BaseModel()
