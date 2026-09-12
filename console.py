@@ -1,9 +1,13 @@
 #!/usr/bin/python3
 import cmd
+"""
+Command Line Interpreter for the AirBNB clone"""
 
 
 class HBNBCommand(cmd.Cmd):
-    """Command Line Interpreter for the AirBNB clone"""
+    """
+    Command Line Interpreter for the AirBNB clone
+    """
     prompt = "(hbnb)"
 
     def do_help(self, arg):
