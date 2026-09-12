@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-import cmd
 """
-Command Line Interpreter for the AirBNB clone"""
+Command Line Interpreter for the AirBNB clone
+"""
+import cmd
 
 
 class HBNBCommand(cmd.Cmd):
